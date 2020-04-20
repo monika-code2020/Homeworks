@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 14 Warm Ups</title>
+</head>
+<body>
+    <script>
+        
+   /*     //warm up 1
+
+        for(var i=1; i<=100; i++){
+            console.log(i);
+        }
+*/
+
+        //warm up 2
+
+        var sentence = ["This", "is", "an", "amazing", "sentence"];
+        var newSentence = "";
+
+        //isto sto i for( var i=0; i<sentence.length; i++)
+        var i=0;
+
+        while(i<sentence.length){
+            newSentence += sentence[i];
+
+            if(i !== sentence.length-1){
+                newSentence += " ";
+                i++;
+        }
+            else if(i === sentence.length-1) {
+                newSentence += ".";
+                break;
+        }
+    }
+        
+        console.log(newSentence);
+
+
+
+    // warm up 3
+
+    var myArray = [null, 0, 1, 2, "five", "six", 3, 4, undefined, 5, 7];
+
+   
+
+    var sumOfNumbers = function(array){
+
+        var sum=0;
+
+        for( var i=0; i<array.length; i++){
+
+            if(typeof array[i] === "number"){
+                sum += array[i];
+            }
+            else if(typeof array[i] === "string"){
+                continue;
+            }
+            else if(!array[i])
+            {
+                continue;
+            }
+        }
+        return sum;
+    }
+
+    console.log(sumOfNumbers(myArray));
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
