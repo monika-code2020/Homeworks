@@ -54,7 +54,6 @@
     </div>
 
     <script>
-      //create objects with properties
 
         var john = {
             firstName: 'John',
@@ -80,22 +79,19 @@
             email: "jane@gmail.com"
         };
 
-        //add objects in array
         var users = [john,rob,jane];
 
-    //get all content from form with tagname "input"
-    var inputs = document.getElementsByTagName("input");
 
+    var inputs = document.getElementsByTagName("input");
     var select = document.getElementById("choose_select");
     var button = document.getElementById("load_data");
 
-    //add listener to button
     button.addEventListener("click",loadData);
 
-    //function which field input forms with properties to objects
+
     function loadData() {
+      
         var selected = select.value;
-        //console.log(selected);
 
         if(!selected){
             for(var i=0; i < inputs.length; i++){

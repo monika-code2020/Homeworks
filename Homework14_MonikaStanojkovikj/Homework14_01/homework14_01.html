@@ -8,41 +8,36 @@
 <body>
 
     <script>
-    //create an object with properties full name, mass, and height
-        var John = {
+        var john = {
             name: "John Doe",
             mass: 76,
             height : 1.85,
-            //add a method to each object to calculate the BMI
-            BMI: function(){
-                return (this.mass / (this.height * this.height));
+            calcBMI: function() {
+                this.bmi = this.mass / (this.height * this.height);
+                return this.bmi;
             }
         }
 
-     //   console.log(John.BMI());
-
-
-    //create an object with properties full name, mass, and height
-        var Mark = {
+        var mark = {
             name: "Mark Miller",
             mass:  84,
             height : 1.72,
-            //add a method to each object to calculate the BMI
-            BMI: function(){
-                return (this.mass / (this.height * this.height));
+            calcBMI: function() {
+                this.bmi = this.mass / (this.height * this.height);
+                return this.bmi;
             }
         }
-     //   console.log(Mark.BMI());
-     //log to the console who has the highest BMI
+        john.calcBMI();
+        mark.calcBMI()
 
-    if(Mark.BMI() > John.BMI()){
-        console.log(Mark.name + " has higher BMI: " + Mark.BMI() + ". John's BMI is: " + John.BMI());
+    if(mark.bmi > john.bmi){
+        console.log(mark.name + " has " + mark.bmi + " BMI. It is higher than BMI of " + john.name + " who has : " + john.bmi + " BMI.");
     }
-    else if(Mark.BMI() < John.BMI()){
-        console.log(John.name + " has higher BMI: " + John.BMI() + ". Mark's BMI is: " + Mark.BMI());
+    else if(mark.bmi < john.bmi){
+        console.log(john.name + " has " + john.bmi + " BMI. It is higher than BMI of " + mark.name + " who has: " + mark.bmi + " BMI.");
     }
-    else if(Mark.BMI() === John.BMI())
-        console.log(Mark.name + John.name + " has same BMI and it is: "+ Mark.BMI());
+    else if(mark.bmi === john.bmi)
+        console.log(mark.name + " and " + john.name + " has same BMI and it is: "+ mark.bmi);
         
     </script>
     
