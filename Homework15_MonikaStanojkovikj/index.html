@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 15</title>
+    
+
+</head>
+<body>
+    <div class="container">
+
+    </div>
+
+    <ul id="ul">
+
+    </ul>
+
+
+    <script>
+
+        var container = document.querySelector(".container");
+
+        var headingElement = document.createElement("h1");
+        headingElement.textContent = "My Shopping List";
+        container.appendChild(headingElement);
+
+        var spanElement = document.createElement("span");
+        spanElement.textContent = "Enter a new item: ";
+        container.appendChild(spanElement);
+        
+        var inputElement = document.createElement("input");
+        inputElement.setAttribute("type" , "text");
+        inputElement.id = "myInput";
+        container.appendChild(inputElement);
+
+        var buttonAdd = document.createElement("button");
+        buttonAdd.setAttribute("type" , "button");
+        buttonAdd.textContent = "Add Item";
+        buttonAdd.style.marginLeft = "5px";
+        container.appendChild(buttonAdd);
+
+        buttonAdd.addEventListener("click", toDoListElement);
+
+        var ulItem = document.querySelector("#ul");
+   //     var inputText = document.getElementById("myInput").value;
+
+        // console.log(addItem);
+        // console.log(inputItem);
+        
+
+         function toDoListElement(){
+
+            var listItem = document.createElement("li");
+            var spanItem = document.createElement("span");
+            var buttonDelete = document.createElement("button");
+            buttonDelete.textContent = "Delete";
+            buttonDelete.style.marginLeft = "5px";
+
+            spanItem.textContent = inputElement.value;
+
+            ulItem.appendChild(listItem);
+            ulItem.appendChild(spanItem);
+            ulItem.appendChild(buttonDelete);
+
+            
+            var clearInput = document.getElementById("myInput").value = "";
+
+
+            buttonDelete.addEventListener ("click", deleteListElement);
+
+            function deleteListElement(){
+                ulItem.removeChild(listItem);
+                ulItem.removeChild(spanItem);
+                ulItem.removeChild(buttonDelete);
+
+            }
+        }
+
+
+
+
+         
+
+    </script>
+</body>
+</html>
