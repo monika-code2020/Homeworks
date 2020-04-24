@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Listener</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="text-center bg-light">
+        <h2 class="h2">Form</h2>
+        <hr>
+        <div class="w-25 text-center mx-auto pb-3">
+            <select class="custom-select mb-2">
+                <option value="" selected class="bg-secondary text-white">Select class</option>
+                <option value="primary" class="bg-secondary text-white">Primary</option>
+                <option value="secondary"class="bg-secondary text-white">Secondary</option>
+                <option value="success" class="bg-secondary text-white">Success</option>
+                <option value="danger" class="bg-secondary text-white">Danger</option>
+                <option value="warning" class="bg-secondary text-white">Warning</option>
+                <option value="info" class="bg-secondary text-white">Info</option>
+                <option value="dark" class="bg-secondary text-white">Dark</option>
+            </select>
+            <button class="btn btn-block btn-primary">Primary</button>
+        </div>
+    </div>
+    
+
+
+    <script>
+
+        var select = document.querySelector("select");
+        var button = document.querySelector("button");
+
+        select.onchange = function(){
+            var selected = this.value;
+
+            switch(selected){
+               case 'primary': 
+               button.removeAttribute('disabled');
+               button.setAttribute("class","btn btn-block btn-primary");
+               button.textContent = "Primary";
+               break;
+
+               case 'secondary': 
+               button.setAttribute("class","btn btn-block btn-secondary");
+               button.textContent = "Secondary";
+               break;
+
+               case 'success': 
+               button.setAttribute("class","btn btn-block btn-success");
+               button.textContent = "Success";
+               break;
+
+               case 'danger': 
+               button.setAttribute("class","btn btn-block btn-danger");
+               button.textContent = "Danger";
+               break;
+
+               case 'warning': 
+               button.setAttribute("class","btn btn-block btn-warning");
+               button.textContent = "Warning";
+               break;
+
+               case 'info': 
+               button.setAttribute("class","btn btn-block btn-info");
+               button.textContent = "Info";
+               break;
+
+               case 'dark': 
+               button.setAttribute("class","btn btn-block btn-dark");
+               button.textContent = "Dark";
+               break;
+
+               case '': 
+               button.setAttribute("class","btn btn-block btn-dark disabled");
+               button.textContent = "Disabled";
+               break;
+
+            }
+            console.log(button);
+
+            
+        }
+       
+
+
+    </script>
+</body>
+</html>
