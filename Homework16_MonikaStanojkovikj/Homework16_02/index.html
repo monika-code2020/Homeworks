@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 16_02</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+    div .col-sm{
+        height: 60px;
+        background-color: red;
+  }
+    </style>
+</head>
+<body>
+    <div>
+    <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+          </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+          </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+          </div>
+          
+    </div>
+
+    <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
+        </div>
+          
+    </div>
+
+<script>
+    // //for(var i=0 ; i<=16 ; i++)
+    // {
+    //     var square = document.createElement('div');
+    //     document.body.appendChild('square');
+    // }
+
+    var divs = document.querySelectorAll(".col-sm");
+
+    for (var i=0; i <divs.length ; i++){
+        divs[i].onclick = function(element){
+            element.target.style.backgroundColor = random_bg_color();
+        }
+    }
+
+    function random_bg_color() {
+    var bgColor = "rgb(" + 
+                Math.floor(Math.random() * 256) + "," +
+                Math.floor(Math.random() * 256) + "," + 
+                Math.floor(Math.random() * 256) + ")";
+        return bgColor;
+    }
+
+</script>
+
+</div>
+</body>
+</html>
