@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Listener</title>
+    <title>Document</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 <body>
-
+    
     <div class="text-center bg-light">
         <h2 class="h2">Form</h2>
         <hr>
@@ -28,65 +30,33 @@
     </div>
     
 
-
     <script>
 
         var select = document.querySelector("select");
-        var button = document.querySelector("button");
 
-        select.onchange = function(){
+
+       select.onchange = function(){
+           
             var selected = this.value;
 
-            switch(selected){
-               case 'primary': 
-               button.removeAttribute('disabled');
-               button.setAttribute("class","btn btn-block btn-primary");
-               button.textContent = "Primary";
-               break;
+            var button = document.querySelector("button");
 
-               case 'secondary': 
-               button.setAttribute("class","btn btn-block btn-secondary");
-               button.textContent = "Secondary";
-               break;
+            if(selected !== ""){
 
-               case 'success': 
-               button.setAttribute("class","btn btn-block btn-success");
-               button.textContent = "Success";
-               break;
-
-               case 'danger': 
-               button.setAttribute("class","btn btn-block btn-danger");
-               button.textContent = "Danger";
-               break;
-
-               case 'warning': 
-               button.setAttribute("class","btn btn-block btn-warning");
-               button.textContent = "Warning";
-               break;
-
-               case 'info': 
-               button.setAttribute("class","btn btn-block btn-info");
-               button.textContent = "Info";
-               break;
-
-               case 'dark': 
-               button.setAttribute("class","btn btn-block btn-dark");
-               button.textContent = "Dark";
-               break;
-
-               case '': 
-               button.setAttribute("class","btn btn-block btn-dark disabled");
-               button.textContent = "Disabled";
-               break;
-
+            button.removeAttribute("disabled");
+            button.removeAttribute("class");
+            button.setAttribute("class","btn btn-block btn-" + selected);
+            button.textContent = selected.charAt(0).toUpperCase() + selected.slice(1);
             }
+
+            else{
+                button.setAttribute("disabled","");
+            }
+
             console.log(button);
-
-            
         }
-       
-
 
     </script>
+
 </body>
 </html>
