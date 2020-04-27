@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" 
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+
 </head>
 <body>
     <div class="text-center bg-light">
@@ -16,6 +20,7 @@
             <div class="form-group col-sm-4 offset-sm-3 mx-auto pb-3 text-left">
                 <label for="favoriteFruits">Please type your favorite fruits separated by comma:</label>
                 <input type="text" class="form-control" id="favoriteFruits">
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
                 <small class="form-text text-muted">You can type in fruits only from this list:<br>
                     apples, pears, oranges, pineapples, kiwis, bananas, berries, watermelons, lemons</small>
                 <button type="button" id="addFruits" class="btn btn-block btn-primary my-2">Add fruits</button>
@@ -40,15 +45,10 @@
     function addFruitsToArray(){
 
         var inputFruits = input.value ? input.value : false;
-        console.log(inputFruits);
 
         var fruits = inputFruits.split(", ");
-         console.log(fruits);
 
         var myFruits = ["apples", "pears", "oranges", "pineapples", "kiwis", "bananas", "berries", "watermelons", "lemons"];
-
-        console.log(myFruits);
-
 
         if(inputFruits !== false)
         {   var validFruits = [];
@@ -64,24 +64,26 @@
                     invalidFruits.push(fruits[i]);
                 }
             }
-            console.log(validFruits);
-            console.log(invalidFruits);
-
 
             if(invalidFruits.length === 0){
-
+ 
                 input.className = "form-control is-valid";
+                //  var iconMark = document.createElement("i");
+                //  iconMark.className = "fa fa-check";
+                //  input.appendChild("iconMark");
             }
-            else if(invalidFruits.length === 0){
+            else{
 
                 input.className = "form-control is-invalid";
 
                 invalidFeedback.textContent = "We can't add \" " + invalidFruits.join(", ") +  "\". Its not in our fruit list.";
                 invalidFeedback.style.color = "red";
             }  
-        addFruitToList(validFruits);
+
+            addFruitToList(validFruits);
         }
     }
+
     function addFruitToList(fruitsList)
     {   
         var fruitList = fruitsList;
