@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 17_02</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="text-center bg-light">
+        <h2 class="h2">Favorite Fruits</h2>
+        <hr>
+            <form class="col-sm-4 offset-sm-4 mx-auto pb-3 text-left">
+                <div class="form-group">
+                  <label for="favoriteFruits">Please type your favorite fruits separated by comma:</label>
+                  <input type="text" class="form-control" id="favoriteFruits">
+                  <small class="form-text text-muted">You can type in fruits only from this list:<br>
+                apples, pears, oranges, pineapples, kiwis, bananas, berries, watermelons, lemons</small>
+                </div>
+            <button id="addFruits" class="btn btn-block btn-primary">Add fruits</button>
+            <div class="invalid-feedback"></div>
+        </form>
+        <div class="container">
+            <ul class="list-group"></ul>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    var input = document.querySelector("input");
+    var invalidFeedback = document.querySelector(".invalid-feedback");
+    var ul = document.querySelector("ul");
+    var button = document.querySelector("#addFruits");
+
+    button.addEventListener("click",addFruitsToArray);
+
+    function addFruitsToArray(){
+
+        var inputArray = input.value ? input.value : false;
+
+        var fruitsArray = inputArray.split(",");
+
+        var myFruitsArray = "apples, pears, oranges, pineapples, kiwis, bananas, berries, watermelons, lemons";
+
+        if(inputArray !== false)
+        {   
+            var invalidFruitsArray = []; 
+
+            for(var i=0; i < fruitsArray.length ; i++)
+            {
+                if(myFruitsArray.indexOf(fruitsArray[i]) !== -1){
+                    addFruitToList(fruitsArray[i].trim());
+                }
+                else if (myFruitsArray.indexOf(fruitsArray[i]) === -1)
+                {
+                    invalidFruitsArray.push(fruitsArray[i].trim());
+                }
+
+            }
+
+        if(invalidFruitsArray === ""){
+
+            input.className = "is-valid";
+        }
+        else{
+            input.className = "is-invalid";
+
+            var invalidSpan = document.createElement("span");
+            invalidSpan.textContent = "We can't add " + invalidFruitsArray.join(",") +  ". Its not in our fruit list.";
+            invalidSpan.style.color = "red";
+            invalidFeedback.appendChild(invalidSpan);
+        }
+    }
+}
+
+    function addFruitToList(fruit)
+    {
+        var listElementFruit = document.createElement("li");
+        listElementFruit.className = "list-group-item d-flex justify-content-between align-items-center";
+        listElementFruit.textContent = fruit;
+
+        var listButtonDelete = document.createElement("button");
+        listButtonDelete.className ="badge badge-danger";
+        listButtonDelete.textContent = "Delete";
+        listButtonDelete.addEventListener("click",removeFruitFromList);
+
+        ul.appendChild(listElementFruit);
+        ul.appendChild(listButtonDelete);
+    }
+
+    function removeFruitFromList(){
+        var oneListItem = this.parentElement;
+        oneListItem.remove();
+    }
+   
+
+
+</script>
+</html>
