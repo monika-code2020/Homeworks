@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 17_03</title>
+</head>
+<body>
+
+    <div>
+        <p class="textCamelCase"></p>
+        <p class="textTitleCase"></p>
+    </div>
+
+    <script>
+        var camelCaseText = "the simplestThings in LIFE are alwaysThe best";
+
+         function getWords(sentence){
+
+            var words = sentence.split(/(?=[A-Z])/);
+            var word = words.join(" ");
+
+             return word;
+        }
+
+        var splitedWords = getWords(camelCaseText);   
+        
+        var wordsArray = splitedWords.split(" ");
+
+        console.log(wordsArray);
+
+    </script>
+    
+</body>
+</html>
