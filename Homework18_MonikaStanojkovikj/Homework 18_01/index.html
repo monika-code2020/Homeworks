@@ -105,7 +105,9 @@
         var dates = ["1/1/2020", "10/4/2020", "7/5/2019", "1/6/2020", "31/8/2020", "9/9/2020", "12/12/2021", "15/10/2019"];
 
         function maxDate(datesArray){
-            var dates = datesArray;
+
+             //FIRST SOLUTION
+
             var largest = new Date(dates[0]);
             for(var i=0; i < dates.length; i++){
                 var newDate = new Date(dates[i]);
@@ -119,7 +121,43 @@
             }
                 return (largest.getDate() + "/" + (largest.getMonth()+1) + "/" + largest.getFullYear());
         }
+
         console.log(maxDate(dates));
+
+</script>
+
+
+<script>
+// *******************************************************************************************************************
+// Javascript callback function practice
+// *******************************************************************************************************************
+
+var some_array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function myMap(myArray, callback){
+    changedArray = [];
+    for(var i=0; i < myArray.length; i++){
+        if (typeof callback === "function"){
+            callback(myArray[i]);
+        }
+    }
+    return changedArray;
+}
+
+
+console.log(myMap(some_array, function(increment){
+    changedArray.push(increment + 1);
+} ));
+
+console.log(myMap(some_array, function(double){
+    changedArray.push(double * 2);
+
+} ));
+
+console.log(myMap(some_array, function(square){
+    changedArray.push(square * square);
+}));
+
 
     </script>
     
