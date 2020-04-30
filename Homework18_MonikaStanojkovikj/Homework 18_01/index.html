@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 18_01</title>
+</head>
+<body>
+
+    <script>
+
+        // 1) 
+        function currentDate(separator){
+        var date = new Date();
+        //if date < 10, puts a zero before value of Date
+        var dd = (date.getDate() < 10 ? '0' : '') 
+                        + date.getDate();   
+        var mm = ((date.getMonth() + 1) < 10 ? '0' : '') 
+                        + (date.getMonth() + 1);
+        var yy = date.getFullYear();
+        //T this is for anyone separator
+        if (separator){
+             var printDate = dd + separator + mm + separator + yy;
+        }
+        // if (separator === "-"){
+        //      var printDate = dd + "-" + mm + "-" + yy;
+        // }
+        // else if(separator === "|"){
+        //     var printDate = dd + "|" + mm + "|" + yy;
+        // }
+        else{
+            var printDate = dd + "/" + mm + "/" + yy;
+        }
+            return printDate;
+        }
+
+        console.log(currentDate());
+        console.log(currentDate("-"));
+        console.log(currentDate("|"));
+
+
+        // 2) 
+
+        function getDaysInMonth(month, year){
+            // 3rd argument 0 in function is last day of previous month
+            //with month only january = 1, february = 2....
+            return new Date(year, month, 0).getDate();
+
+            // with month+1 january = 0, february = 1....
+            // return new Date(year, month+1, 0).getDate();
+        }
+        console.log(getDaysInMonth(4, 2020));
+        // console.log(getDaysInMonth(5, 2020));
+
+
+        // 3)
+
+        function month_name(date){
+
+            var month = date.getMonth();
+            var monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"];
+
+            return monthNames[month];
+        }
+
+        console.log(month_name(new Date("10/11/2020")));
+
+        // 4)
+
+        function isWeekend(date){
+            var day = new Date(date);
+            var weekendDay = day.getDay();
+
+            if ((weekendDay === 0) || (weekendDay === 6)){
+                var weekend = "Is Weekend";
+            }
+
+            return weekend;
+        }
+        console.log(isWeekend('Apr 26, 2020'));
+
+
+        // 5)
+        function date_diff_indays(date1, date2){
+            var dateOne = new Date(date1);
+            var dateTwo = new Date(date2);
+            
+            return difference_indays = Math.floor((dateTwo - dateOne)/ 1000 / 60 / 60 / 24) + " days";
+            
+        }
+        console.log(date_diff_indays('04/02/2014', '11/04/2014'));
+
+
+        // 6)
+        function lastday(year, month){
+
+             return new Date(month+1, year, 0).getDate();
+        }
+
+        console.log(lastday(2014,11));
+
+
+        // 7)
+        var dates = ["1/1/2020", "10/4/2020", "7/5/2019", "1/6/2020", "31/8/2020", "9/9/2020", "12/12/2021", "15/10/2019"];
+
+        function maxDate(datesArray){
+            var dates = datesArray;
+            var largest = new Date(dates[0]);
+            for(var i=0; i < dates.length; i++){
+                var newDate = new Date(dates[i]);
+                if(newDate.getFullYear() > largest.getFullYear()){
+                    if(newDate.getMonth() > largest.getMonth()){
+                        if(newDate.getDate() > largest.getDate()){
+                            largest = newDate;
+                        }
+                    }
+                }
+            }
+                return (largest.getDate() + "/" + (largest.getMonth()+1) + "/" + largest.getFullYear());
+        }
+        console.log(maxDate(dates));
+
+    </script>
+    
+</body>
+</html>
