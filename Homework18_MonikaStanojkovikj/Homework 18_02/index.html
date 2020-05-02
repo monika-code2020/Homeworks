@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 18_02</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Amaranth|Fredoka+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+
+    
+</head>
+<body>
+    <div id="spinner"></div>
+    <div class="container text-white">
+        <h1>New Year Countdown</h1>
+        <div id="counter" class="row d-flex justify-content-center d-none">
+            <div class="day col ">
+                <span id="days"></span>
+                <span class="small d-block">days</span>
+            </div>
+            <div class="hour col">
+                <span id="hours"></span>
+                <span class="small d-block">hours</span>
+            </div>
+            <div class="minute col">
+                <span id="minutes"></span>
+                <span class="small d-block">minutes</span>
+            </div>
+            <div class="second col">
+                <span id="seconds"></span>
+                <span class="small d-block">seconds</span>
+            </div>
+        </div>
+    <div id="transparent-year">2021</div>        
+</div>
+
+    
+
+
+    <script>
+        function updateCountDown(){
+
+            var spinner = document.querySelector("#spinner");
+            spinner.setAttribute("class","d-none");
+
+            var counter = document.querySelector("#counter");
+            counter.setAttribute("class","row d-flex justify-content-center");
+
+            var currentTime = new Date().getTime();
+            var countDownTime = new Date('January 01 2021 00:00:00').getTime();
+            var difference = countDownTime - currentTime; // difference in milliseconds
+
+
+            var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            var hours = Math.floor(difference % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+            var minutes = Math.floor(difference % (1000 * 60 * 60) / (1000 * 60));
+            var seconds = Math.floor(difference % (1000 * 60) / 1000);
+
+            hours = (hours < 10) ? "0" + hours : hours;
+            minutes = (minutes < 10) ? "0" + minutes : minutes;
+            seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+         }
+        var counter = setInterval(updateCountDown,1000);
+
+        function showSpinner(){
+
+        }
+    
+    </script>
+    
+</body>
+</html>

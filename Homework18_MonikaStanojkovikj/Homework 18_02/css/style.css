@@ -1,0 +1,65 @@
+body{
+    
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../img/background-image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Amaranth', sans-serif;
+    margin: auto;
+    min-width: 100%;
+    min-height: auto;
+    font-size: 40px;
+    font-weight: 400;  
+}
+
+#transparent-year{
+
+    opacity: 0.2;
+    text-align: center;
+    font-size: 140px;
+    padding-top: 20px;
+}
+
+div #counter{
+    text-align: center;
+    margin: -18% 20% 2% 30% ;
+    width: 420px;
+}
+
+h1{
+    margin: 22% 20% 20% 30% ;
+    font-size: 50px;
+    font-weight: 700;
+
+}
+
+.small{
+    font-size: 15px;
+}
+
+#spinner{
+    visibility: hidden;
+    width: 80px;
+    height: 80px;
+  
+    border: 2px solid #f3f3f3;
+    border-top:3px solid #f25a41;
+    border-radius: 100%;
+  
+    position: absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right: 0;
+    margin: auto;
+  
+    animation: spin 1s infinite linear;
+  }
+  
+  @keyframes spin {
+    from {
+        transform: rotate(0deg);
+    } to {
+        transform: rotate(360deg);
+    }
+  }
+  
