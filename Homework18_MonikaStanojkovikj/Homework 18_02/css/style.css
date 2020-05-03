@@ -19,7 +19,7 @@ body{
     padding-top: 20px;
 }
 
-div #counter{
+div #timeout{
     text-align: center;
     margin: -18% 20% 2% 30% ;
     width: 420px;
@@ -36,30 +36,29 @@ h1{
     font-size: 15px;
 }
 
-#spinner{
-    visibility: hidden;
-    width: 80px;
-    height: 80px;
+
   
-    border: 2px solid #f3f3f3;
-    border-top:3px solid #f25a41;
-    border-radius: 100%;
-  
-    position: absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right: 0;
-    margin: auto;
-  
-    animation: spin 1s infinite linear;
-  }
-  
-  @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    } to {
-        transform: rotate(360deg);
-    }
-  }
-  
+@-webkit-keyframes spin {
+	from {-webkit-transform:rotate(0deg);}
+	to {-webkit-transform:rotate(360deg);}
+}
+
+@keyframes spin {
+	from {transform:rotate(0deg);}
+	to {transform:rotate(360deg);}
+}
+
+#spinner::after {
+    content:'';
+    display:block;
+    position:absolute;
+    left:48%;top:40%;
+    width:40px;height:40px;
+    border-style:solid;
+    border-color: white;
+    border-top-color:transparent;
+    border-width: 4px;
+    border-radius:50%;
+    -webkit-animation: spin .8s linear infinite;
+    animation: spin .8s linear infinite;
+}
