@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework 19_01</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="content">
+        <div class="row mt-3">
+            <div class="banner col-md-8 offset-md-2">
+                
+            </div>
+        </div>
+        <div class="row bg-light">
+            <div class="col-md-8 offset-md-2 ">
+            <div class="row d-flex heroes-cards"></div>
+        </div>
+            
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script>
+
+
+        var banner = document.querySelector(".banner");
+        var heroes = document.querySelector(".heroes-cards");
+
+
+
+        url = "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
+
+        fetch(url).then(response => {
+            return response.json();
+        }).then(function (data) {
+           printHeroDataToPage(data);
+        }).catch(function (error) {
+            console.log(error);
+    });
+
+        function printHeroDataToPage(data){
+
+            banner.innerHTML = createBanner(data);
+            heroes.innerHTML = createCard(data);
+        };
+
+        function createBanner(data){
+            var title = data.squadName;
+            var town = data.homeTown;
+            var base = data.secretBase;
+            var formed = data.formed;
+
+            var jumbotron = `
+            <div class="jumbotron">
+            <h1 class="h2">${title}</h1>
+            <p class="lead">${town}</p>
+            <hr class="my-4">
+            <p class="text-center h5">${base}</p>
+            <p class="text-center h5">${formed}</p>
+            </div>
+            `;
+            return jumbotron;
+        };
+
+
+        function createCard(data){
+            var heroData = [
+                {   name: "Molecule Man", 
+                    imgUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Molecule_Man.jpg/250px-Molecule_Man.jpg", 
+                    readMoreUrl: "https://en.wikipedia.org/wiki/Molecule_Man" 
+                },
+
+                {   name: "Madame Uppercut", 
+                    imgUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Madame-Web.png/250px-Madame-Web.png", 
+                    readMoreUrl: "https://en.wikipedia.org/wiki/Madame_Web" 
+                },
+                {   name: "Eternal Flame", 
+                    imgUrl: "https://vignette.wikia.nocookie.net/marvel-cinematic-universe/images/7/7b/Eternal_Flame.png", 
+                    readMoreUrl: "https://marvelcinematicdatabase.fandom.com/wiki/Eternal_Flame" 
+                }
+                ];
+
+            var card ="";
+            var members = data.members;
+
+                members.forEach(member => {
+                    var name = member.name;
+                    var age = member.age;
+                    var identity = member.secretIdentity;
+                    var powers = member.powers;
+
+                    var powersNumber = 0;
+                    var heroStrength;
+                    var progressColor;
+                    var powerList = "";
+                    var heroImage = "";
+                    var heroReadMore = "";
+
+                    for(var i=0; i < powers.length ;i++)
+                    {
+                        powersNumber++;
+                        var power = `<li class="list-group-item">${powers[i]}</li>`;
+                        powerList += power;
+                    }
+
+                    heroStrength = powersNumber === 1 ? 60 : powersNumber >=2 || powersNumber <=4 ? 80 : powersNumber > 4 ? 100 : 0;
+                    progressColor = powersNumber === 1 ? 'success' : powersNumber >=2 || powersNumber <=4 ? 'warning' : powersNumber > 4 ? 'danger' : 'info';
+
+
+
+                    for(var i=0; i < heroData.length ; i++) {
+                        if(heroData.name === name){
+                            var heroImage = heroData[i].imgUrl;
+                            var heroReadMore = heroData[i].readMoreUrl;
+                        }
+                    }
+
+                    card = card + `
+                    <div class="col-md">
+                    <div class="card">
+                    <img src="${heroImage}" class="card-img-top" alt="${name}">
+                    <div class="card-body">
+                    <h5 class="card-title">${name}</h5>
+                    <p class="card-text">Strength:</p>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped bg-${progressColor}" role="progressbar" style="width: ${heroStrength}" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <p class="card-text">Age: ${age}</p>
+                    <p class="card-text">Secret Identity: ${identity}</p> 
+                    <h5 class="card-title">Powers:</h5>
+                    <ul class="list-group">${powerList}</ul>
+                    <a href="${heroReadMore}" class="btn btn-primary mt-4">Read More...</a>
+                    </div>
+                    </div>
+                    </div>
+                    `;
+                });
+                
+                return card;
+
+                };
+
+               
+</script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

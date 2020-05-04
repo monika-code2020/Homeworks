@@ -1,0 +1,13 @@
+html{
+    font-family: 'Roboto', sans-serif;
+}
+
+.jumbotron{
+    background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.8)),url(https://upload.wikimedia.org/wikipedia/en/c/c4/Super_Hero_Squad_Show.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+
+
