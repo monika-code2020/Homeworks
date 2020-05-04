@@ -1,0 +1,44 @@
+a {
+    text-decoration: none;
+    color:white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+li:hover {
+    background-color: lightgray;
+    color: black; 
+}
+button:hover{
+    background-color: lightgray;
+    color: black; 
+
+}
+.dropdown-menu-list{
+    background-color: black;
+}
+
+.menu-item, .item{
+    background-color: black;
+    color: white;
+    list-style: none;
+    padding: 15px 0;
+    margin-left: 0;
+}
+
+
+
+button{
+    float: right;
+    padding: 8px;
+    margin-top: 0;
+    border-style: none;
+    background-color: black;
+    color: white;
+    padding: 15.5px 20px;
+    margin-top: -55px;
+}
+
