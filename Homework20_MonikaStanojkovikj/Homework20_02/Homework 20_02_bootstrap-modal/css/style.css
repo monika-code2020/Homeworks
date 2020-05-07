@@ -1,0 +1,14 @@
+.navbar {
+    background-color: darkslateblue;
+    color: white;
+}
+.header , .modal-header{
+    background-color: darkslateblue;
+    color: white;
+}
+
+.btn{
+    background-color: mediumorchid;
+    color: white;
+}
+
