@@ -1,9 +1,43 @@
 <?php
-  if (isset($_POST["username"]) && (isset($_POST["login"]))) {
-    setcookie("username", $_POST["username"]);
-    header("Location: index.php?page=about");
-}
-?>
+    if(isset($_GET['page'])){
+        $page = ($_GET['page']);
+    }
+
+    if (isset($_POST["username"]) && (isset($_POST["login"]))) {
+        setcookie("username", $_POST["username"]);
+        header("Location: index.php?page=about");
+    }
+
+    if(!empty($page)){
+        switch($page){
+
+            case 'about':
+                include ('pages/about.php');
+                $footer = true;
+            break;
+
+            case 'contact':
+                include ('pages/contact.php');
+                $footer = false;
+            break;
+
+            case 'login':
+                include ('pages/login.php');
+                $footer = false;
+            break;
+
+            default:
+            include ('pages/main.php');
+            $footer = true;
+        }
+    }
+    else{
+        $title = 'Home';
+        include ('pages/main.php');
+        $footer = true;
+    }
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,37 +98,7 @@
     <!-- Navigation -->
     <?php include('./includes/navigation.inc.php'); ?>
 
-    <?php 
-        if(isset($_GET['page'])){
-            switch($_GET['page']){
-
-                case 'about':
-                    include ('pages/about.php');
-                    $footer = true;
-                break;
-
-                case 'contact':
-                    include ('pages/contact.php');
-                    $footer = false;
-                break;
-
-                case 'login':
-                    include ('pages/login.php');
-                    $footer = false;
-                break;
-
-                default:
-                include ('pages/main.php');
-                $footer = true;
-            }
-        }
-        else{
-            $title = 'Home';
-            include ('pages/main.php');
-            $footer = true;
-        }
-    ?> 
-    <!-- Content End -->
+    <!-- Content-->
 
     <!-- Footer -->
 
