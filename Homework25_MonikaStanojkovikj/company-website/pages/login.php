@@ -6,7 +6,7 @@
           <div class="text-center py-4">
             <i class="fas fa-user-circle fa-3x"></i></div>
           <h3 style="text-align: center" class="pb-4">LOGIN</h3>
-          <form class="form-group">
+          <form class="form-group" action="" method="POST">
             <input type="text" class="form-control" placeholder="Enter username" name="username">
             <br>
             <input type="text" class="form-control" placeholder="Enter password">

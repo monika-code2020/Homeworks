@@ -1,9 +1,10 @@
-<div class="container header">
+    <!-- Content Start -->
+    <div class="container header">
         <div class="jumbotron">
             <div class="header-content mt-4">
                 <h2 class="display-2">Company Inc.</h2>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ut unde quaerat consequatur?</p>
-                <a href="login.html" class="btn btn-primary">Get Started</a>
+                <a href="index.php?page=login" class="btn btn-primary">Get Started</a>
             </div>
         </div>
     </div>
@@ -25,3 +26,4 @@
         </div>
 
     </div>
+
