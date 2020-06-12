@@ -1,10 +1,8 @@
 <?php 
-
-require "Select.php";
-require "Database.php";
+include "Select.php";
+include "Database.php";
 
 $browsers = ["Firefox", "Chrome", "Internet Explorer", "Safari", "Opera", "Other"];
-
 ?>
 
  <!DOCTYPE html>
@@ -29,7 +27,7 @@ $browsers = ["Firefox", "Chrome", "Internet Explorer", "Safari", "Opera", "Other
 <p>Browser:
 <?php
 $select = new Select;
-$select->setName("Browsers");
+$select->setName("browsers");
 $select->setValue($browsers);
 $select->makeSelect();
 ?>
@@ -40,17 +38,19 @@ $select->makeSelect();
 <?php elseif (isset($_POST['submit'])):?>
 
 <?php
-      if (!empty($_POST['name']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['Browsers'])) {
+      if (!empty($_POST['name']) && !empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['browsers'])) {
         $name = trim($_POST['name']);
         $username = trim($_POST['username']);
         $email = trim($_POST['email']);
-        $browser = $_POST['Browsers'];
+        $browser = $_POST['browsers'];
         $createdAt = date("Y-m-d H:m:s");
 
-        $db = new DB;
-        $db->createUser(trim($_POST['name']), trim($_POST['username']), trim($_POST['email']), $_POST['Browsers'], date("Y-m-d H:m:s"));
+        $dataBase = new DataBase;
+        $dataBase->createUser(trim($_POST['name']), trim($_POST['username']), trim($_POST['email']), $_POST['browsers'], date("Y-m-d H:m:s"));
 
-        echo "<p>Successfuly created user: <b>".$username."</b> in: <b>".$browser."</b> browser, at: <b>".$createdAt."</b></p>";
+        echo "<p>Created user: <b>".$username."</b></p>";
+        echo "<p>Browser: <b>".$browser."</b></p>";
+        echo "<p>Created at: <b>".$createdAt."</b></p>";
 
       }else {
         echo "You must field all information!";
